@@ -16,7 +16,6 @@ class App extends Component {
     if (cityName == null) {
       cityName = '北京';
     }
-    console.log('cityName = ', cityName);
 
     this.props.userInfoActions.update({
       cityName
@@ -40,15 +39,11 @@ class App extends Component {
   }
 }
 
-const mapStateToProps = state => ({
-
-});
-
 const mapDispatchToProps = dispatch => ({
   userInfoActions: bindActionCreators(userInfoActionsFormOtherFile, dispatch)
 });
 
 export default connect(
-  mapStateToProps,
+  null,
   mapDispatchToProps
 )(App);
