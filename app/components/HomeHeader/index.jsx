@@ -5,17 +5,20 @@ import './style.less';
 class HomeHeader extends Component {
   render() {
     return (
-      <div className="clear-fix">
-        <div className="float-left">
-          深圳
+      <div id="home-header" className="clear-fix">
+        <div className="home-header-left float-left">
+          <span>深圳</span>
+          &nbsp;
           <i className="icon-angle-down" />
         </div>
-        <div className="float-right">
+        <div className="home-header-right float-right">
           <i className="icon-user" />
         </div>
-        <div>
-          <i className="icon-search" />
-          <input />
+        <div className="home-header-middle">
+          <div className="search-container">
+            <i className="icon-search" />
+            <input type="text" placeholder="請輸入關鍵字" />
+          </div>
         </div>
       </div>
     );
