@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import LocalStore from '../util/localStore.js';
+import { CITYNAME } from '../config/localStoreKey.js';
 
 class App extends Component {
   state = {
@@ -6,9 +8,14 @@ class App extends Component {
   }
 
   componentDidMount() {
-    setTimeout(() => {
-      this.setState({ initDone: true });
-    }, 1000);
+    let cityName = LocalStore.getItem(CITYNAME);
+    if (cityName == null) {
+      cityName = '北京';
+    }
+
+    this.setState({
+      initDone: true
+    });
   }
 
   render() {
