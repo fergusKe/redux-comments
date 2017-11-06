@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { getAdData } from '../../../fetch/home/home.js';
+import HomeAd from '../../../components/HomeAd';
 
 class Ad extends Component {
   state = {
@@ -22,9 +23,15 @@ class Ad extends Component {
   }
 
   render() {
+    const { data } = this.state;
+
     return (
       <div>
-        {this.state.data.length}
+        {
+          data.length
+          ? <HomeAd data={data} />
+          : <div>加載中...</div>
+        }
       </div>
     );
   }

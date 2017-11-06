@@ -49,6 +49,7 @@
     "no-undef": "off",
     "import/prefer-default-export": "off",
     "react/prop-types": "off",
-    "react/no-unused-state": "off"
+    "react/no-unused-state": "off",
+    "react/no-array-index-key": "off"
   }
 }
