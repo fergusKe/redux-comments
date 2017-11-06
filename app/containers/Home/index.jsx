@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import HomeHeader from '../../components/HomeHeader';
 import Category from '../../components/Category';
+import Ad from './subpage/Ad.jsx';
 
 class Home extends Component {
   render() {
@@ -9,6 +10,8 @@ class Home extends Component {
       <div>
         <HomeHeader cityName={this.props.userinfo.cityName} />
         <Category />
+        <div style={{height: '15px'}} />
+        <Ad />
       </div>
     );
   }
