@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { getListData } from '../../../fetch/home/home.js';
+import ListComponent from '../../../components/List';
 
 import './style.less';
 
@@ -34,11 +35,16 @@ class List extends Component {
   }
 
   render() {
-    // const { cityName } = this.props;
+    const { data } = this.state;
 
     return (
       <div>
         <h2 className="home-list-title">猜你喜欢</h2>
+        {
+          data.length
+          ? <ListComponent data={data} />
+          : <div>加載中...</div>
+        }
       </div>
     );
   }
