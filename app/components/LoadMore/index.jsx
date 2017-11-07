@@ -9,17 +9,8 @@ class LoadMore extends Component {
   }
 
   componentDidMount() {
-    const loadMoreFn = this.props.loadMoreFn;
-    const wrapper = this.refs.wrapper;
+    const callback = this.callback;
     let timeoutId;
-
-    function callback() {
-      const top = wrapper.getBoundingClientRect().top;
-      const windowHeight = window.screen.height;
-      if (top && top < windowHeight) {
-        loadMoreFn();
-      }
-    }
 
     window.addEventListener('scroll', () => {
       if (this.props.isLoadingMore) return;
@@ -32,10 +23,21 @@ class LoadMore extends Component {
     }, false);
   }
 
+  callback = () => {
+    const loadMoreFn = this.props.loadMoreFn;
+    const wrapper = this.wrapper;
+    const top = wrapper.getBoundingClientRect().top;
+    const windowHeight = window.screen.height;
+
+    if (top && top < windowHeight) {
+      loadMoreFn();
+    }
+  }
+
 
   render() {
     return (
-      <div className="load-more" ref="wrapper">
+      <div className="load-more" ref={wrapper => (this.wrapper = wrapper)}>
         {
           this.props.isLoadingMore
           ? <span>加載中...</span>

@@ -51,6 +51,8 @@
     "react/prop-types": "off",
     "react/no-unused-state": "off",
     "react/no-array-index-key": "off",
-    "jsx-a11y/click-events-have-key-events": "off"
+    "jsx-a11y/click-events-have-key-events": "off",
+    "no-return-assign": "off",
+    "prefer-destructuring": "off"
   }
 }
