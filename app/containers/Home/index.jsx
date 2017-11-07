@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
+
 import HomeHeader from '../../components/HomeHeader';
 import Category from '../../components/Category';
 import Ad from './subpage/Ad.jsx';
@@ -23,4 +25,4 @@ const mapStateToProps = state => ({
   userinfo: state.userinfo
 });
 
-export default connect(mapStateToProps)(Home);
+export default withRouter(connect(mapStateToProps)(Home));

@@ -53,6 +53,7 @@
     "react/no-array-index-key": "off",
     "jsx-a11y/click-events-have-key-events": "off",
     "no-return-assign": "off",
-    "prefer-destructuring": "off"
+    "prefer-destructuring": "off",
+    "jsx-a11y/anchor-is-valid": "off"
   }
 }

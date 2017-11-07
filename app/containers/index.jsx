@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
+
 import LocalStore from '../util/localStore.js';
 import { CITYNAME } from '../config/localStoreKey.js';
-
 import * as userInfoActionsFormOtherFile from '../actions/userinfo.js';
 
 class App extends Component {
@@ -43,7 +44,8 @@ const mapDispatchToProps = dispatch => ({
   userInfoActions: bindActionCreators(userInfoActionsFormOtherFile, dispatch)
 });
 
-export default connect(
+export default withRouter(connect(
   null,
   mapDispatchToProps
-)(App);
+)(App));
+
