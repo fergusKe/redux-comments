@@ -16,15 +16,15 @@ class City extends Component {
     if (newCity == null) return;
 
     // 修改 redux
-    const { userinfo, userInfoActions } = this.props;
-    userinfo.cityName = newCity;
-    userInfoActions.update(userinfo);
+    const { userInfoActions, history } = this.props;
+    const newCityName = {cityName: newCity};
+    userInfoActions.update(newCityName);
 
     // 修改 cookie
     LocalStore.setItem(CITYNAME, newCity);
 
     // 跳轉到首頁
-
+    history.replace('/');
   }
 
   render() {
