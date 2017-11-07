@@ -6,8 +6,8 @@ class City extends Component {
   render() {
     return (
       <div>
-        <Header />
-        City
+        <Header title="選擇城市" />
+        <h1>{this.props.title}</h1>
       </div>
     );
   }
