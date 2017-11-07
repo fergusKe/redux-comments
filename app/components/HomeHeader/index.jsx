@@ -1,15 +1,19 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
+import SearchInput from '../SearchInput';
+
 import './style.less';
 
 class HomeHeader extends Component {
   render() {
+    const { cityName } = this.props;
+
     return (
       <div id="home-header" className="clear-fix">
         <div className="home-header-left float-left">
           <Link to="/city">
-            <span>{this.props.cityName}</span>
+            <span>{cityName}</span>
             &nbsp;
             <i className="icon-angle-down" />
           </Link>
@@ -20,7 +24,7 @@ class HomeHeader extends Component {
         <div className="home-header-middle">
           <div className="search-container">
             <i className="icon-search" />
-            <input type="text" placeholder="請輸入關鍵字" />
+            <SearchInput />
           </div>
         </div>
       </div>
