@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { getInfoData } from '../../../fetch/detail/detail.js';
+import DetailInfo from '../../../components/DetailInfo';
 
 class Info extends Component {
   state = {
@@ -27,7 +28,7 @@ class Info extends Component {
       <div>
         {
           info
-          ? <div>有數據了</div>
+          ? <DetailInfo data={info} />
           : ''
         }
       </div>

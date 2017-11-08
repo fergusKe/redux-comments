@@ -10,7 +10,6 @@ class Detail extends Component {
       <div>
         <Header title="商户详情" />
         <Info id={match.params.id} />
-        Detail
       </div>
     );
   }
