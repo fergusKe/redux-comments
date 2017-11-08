@@ -4,6 +4,7 @@ import { Route, Switch } from 'react-router-dom';
 import Home from '../containers/Home';
 import City from '../containers/City';
 import Search from '../containers/Search';
+import Detail from '../containers/Detail';
 import NotFound from '../containers/404';
 
 class SubRouter extends Component {
@@ -13,6 +14,7 @@ class SubRouter extends Component {
         <Route exact path="/" component={Home} />
         <Route path="/city" component={City} />
         <Route path="/search/:category/:keyword?" component={Search} />
+        <Route path="/detail/:id" component={Detail} />
         <Route component={NotFound} />
       </Switch>
     );
