@@ -4,6 +4,8 @@ import './style.less';
 
 const img = require('../../../static/img/3.png');
 
+const imgUrl = `/${img}`;
+
 class Item extends Component {
   render() {
     const { data } = this.props;
@@ -11,7 +13,7 @@ class Item extends Component {
     return (
       <div className="list-item clear-fix">
         <div className="item-img-container float-left">
-          <img src={img} alt={data.title} />
+          <img src={imgUrl} alt={data.title} />
         </div>
         <div className="item-content">
           <div className="item-title-container clear-fix">

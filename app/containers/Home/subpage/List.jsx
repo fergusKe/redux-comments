@@ -60,7 +60,7 @@ class List extends Component {
   }
 
   render() {
-    const { data, isLoadingMore } = this.state;
+    const { data, hasMore, isLoadingMore } = this.state;
 
     return (
       <div>
@@ -71,7 +71,7 @@ class List extends Component {
           : <div>加載中...</div>
         }
         {
-          this.state.hasMore
+          hasMore
           ? <LoadMore isLoadingMore={isLoadingMore} loadMoreFn={this.loadMoreData} />
           : ''
         }
