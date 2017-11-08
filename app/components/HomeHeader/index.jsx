@@ -6,6 +6,10 @@ import SearchInput from '../SearchInput';
 import './style.less';
 
 class HomeHeader extends Component {
+  enterHandle = (value) => {
+    this.props.history.push(`/search/all/${encodeURIComponent(value)}`);
+  }
+
   render() {
     const { cityName } = this.props;
 
@@ -24,7 +28,7 @@ class HomeHeader extends Component {
         <div className="home-header-middle">
           <div className="search-container">
             <i className="icon-search" />
-            <SearchInput />
+            <SearchInput value="" enterHandle={this.enterHandle} />
           </div>
         </div>
       </div>
