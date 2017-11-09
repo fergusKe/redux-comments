@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Star from '../Star';
 
 import './style.less';
 
@@ -11,13 +12,23 @@ class DetailInfo extends Component {
     const { data } = this.props;
 
     return (
-      <div>
-        <img src={imgUrl} alt={data.title} style={{width: '100px'}} />
-        <h1>{data.title}</h1>
-        <p>{data.star}</p>
-        <p>{data.price}</p>
-        <p>{data.subTitle}</p>
-        <p dangerouslySetInnerHTML={{__html: data.desc}} />
+      <div id="detail-info-container">
+        <div className="info-container clear-fix">
+          <div className="info-img-container float-left">
+            <img src={imgUrl} alt={data.title} />
+          </div>
+          <div className="info-content">
+            <h1>{data.title}</h1>
+            <div className="star-container">
+              {/* 引用 Star 组件 */}
+              <Star star={data.star} />
+              <span className="price">￥{data.price}</span>
+            </div>
+            <p className="sub-title">{data.subTitle}</p>
+          </div>
+        </div>
+        {/* 设置 innerHTML */}
+        <p dangerouslySetInnerHTML={{__html: data.desc}} className="info-desc" />
       </div>
     );
   }
