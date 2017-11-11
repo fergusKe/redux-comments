@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Header from '../../components/Header';
 import Info from './subpage/Info.jsx';
+import Comment from './subpage/Comment.jsx';
 
 class Detail extends Component {
   render() {
@@ -10,6 +11,7 @@ class Detail extends Component {
       <div>
         <Header title="商户详情" />
         <Info id={match.params.id} />
+        <Comment id={match.params.id} />
       </div>
     );
   }
