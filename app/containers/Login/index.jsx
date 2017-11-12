@@ -4,6 +4,7 @@ import { withRouter } from 'react-router-dom';
 import { bindActionCreators } from 'redux';
 
 import Header from '../../components/Header';
+import LoginComponent from '../../components/Login';
 
 import * as userInfoActionsFromOtherFile from '../../actions/userinfo';
 
@@ -18,7 +19,7 @@ class Login extends Component {
 
   doCheck = () => {
     const { userinfo } = this.props;
-
+    console.log('userinfo = ', userinfo);
     if (userinfo.username) {
       // 已经登录，则跳转到用户主页
       this.goUserPage();
@@ -31,14 +32,13 @@ class Login extends Component {
   }
 
   // 处理登录之后的事情
-  loginHandl = (username) => {
+  loginHandle = (username) => {
+    // 保存用户名
     const actions = this.props.userInfoActions;
-    const { userinfo } = this.props;
-
+    const userinfo = {...this.props.userinfo, username};
     actions.update(userinfo);
 
     const { router } = this.props.match.params;
-
     if (router) {
       // 跳转到指定的页面
       this.props.history.push(router);
@@ -49,7 +49,7 @@ class Login extends Component {
   }
 
   goUserPage = () => {
-    this.props.history.push('/User');
+    this.props.history.push('/user');
   }
 
   render() {
@@ -58,11 +58,11 @@ class Login extends Component {
 
     return (
       <div>
-        <Header title="登陸" history={history} />
+        <Header title="登錄" history={history} />
         {
           checking
           ? <div>{/* 等待中 */}</div>
-          : <div>顯示登錄組件</div>
+          : <LoginComponent loginHandle={this.loginHandle} />
         }
       </div>
     );
