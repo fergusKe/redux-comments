@@ -1,5 +1,9 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+
 import BuyAndStore from '../../../components/BuyAndStore';
+import * as storeActionsFromFile from '../../../actions/store.js';
 
 class Buy extends Component {
   state = {
@@ -8,7 +12,7 @@ class Buy extends Component {
 
   // 购买事件
   buyHandle = () => {
-    // 验证登录，未登录则retur
+    // 验证登录，未登录则return
     const loginFlag = this.storeHandle();
     if (!loginFlag) return;
 
@@ -46,4 +50,16 @@ class Buy extends Component {
   }
 }
 
-export default Buy;
+const mapStateToProps = state => ({
+  userinfo: state.userinfo,
+  store: state.store
+});
+
+const mapDispatchToProps = dispatch => ({
+  storeActions: bindActionCreators(storeActionsFromFile, dispatch)
+});
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Buy);
