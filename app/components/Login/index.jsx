@@ -16,6 +16,7 @@ class Login extends Component {
   clickHandle = () => {
    const { username } = this.state;
    const { loginHandle } = this.props;
+
    loginHandle(username);
   }
 

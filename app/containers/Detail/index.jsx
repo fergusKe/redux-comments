@@ -12,7 +12,7 @@ class Detail extends Component {
       <div>
         <Header title="商户详情" />
         <Info id={match.params.id} />
-        <Buy id={match.params.id} />
+        <Buy id={match.params.id} history={history} />
         <Comment id={match.params.id} />
       </div>
     );

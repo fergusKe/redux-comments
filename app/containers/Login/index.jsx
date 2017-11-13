@@ -19,7 +19,7 @@ class Login extends Component {
 
   doCheck = () => {
     const { userinfo } = this.props;
-    console.log('userinfo = ', userinfo);
+
     if (userinfo.username) {
       // 已经登录，则跳转到用户主页
       this.goUserPage();
@@ -39,9 +39,10 @@ class Login extends Component {
     actions.update(userinfo);
 
     const { router } = this.props.match.params;
+
     if (router) {
       // 跳转到指定的页面
-      this.props.history.push(router);
+      this.props.history.push(decodeURIComponent(router));
     } else {
       // 跳转到用户主页
       this.goUserPage();

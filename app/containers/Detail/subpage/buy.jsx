@@ -29,7 +29,7 @@ class Buy extends Component {
   // 购买事件
   buyHandle = () => {
     // 验证登录，未登录则return
-    const loginFlag = this.storeHandle();
+    const loginFlag = this.loginCheck();
     if (!loginFlag) return;
 
     // 此过程为模拟购买，因此可省去复杂的购买过程
@@ -41,7 +41,7 @@ class Buy extends Component {
   // 收藏事件
   storeHandle = () => {
     // 验证登录，未登录则return
-    const loginFlag = this.storeHandle();
+    const loginFlag = this.loginCheck();
     if (!loginFlag) return;
 
     const { id, storeActions } = this.props;
@@ -64,7 +64,6 @@ class Buy extends Component {
   // 检查登录状态
   loginCheck = () => {
     const { id, userinfo } = this.props;
-
     if (!userinfo.username) {
       // 跳转到登录页面的时候，要传入目标router，以便登录完了可以自己跳转回来
       this.props.history.push(`/login/${encodeURIComponent(`/detail/${id}`)}`);
@@ -78,7 +77,11 @@ class Buy extends Component {
 
     return (
       <div>
-        <BuyAndStore isStore={isStore} buyHandle={this.buyHandle} storeHandle={this.storeHandle} />
+        <BuyAndStore
+          isStore={isStore}
+          buyHandle={this.buyHandle}
+          storeHandle={this.storeHandle}
+        />
       </div>
     );
   }
