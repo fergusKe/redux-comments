@@ -10,6 +10,22 @@ class Buy extends Component {
     isStore: false
   }
 
+  componentDidMount() {
+    this.checkStoreState();
+  }
+
+   // 验证当前商户是否收藏
+  checkStoreState = () => {
+    const { id, store } = this.props;
+    const isStore = store.find(item => item.id === id);
+
+    if (isStore) {
+      this.setState({
+        isStore: true
+      });
+    }
+  }
+
   // 购买事件
   buyHandle = () => {
     // 验证登录，未登录则return
@@ -24,7 +40,25 @@ class Buy extends Component {
 
   // 收藏事件
   storeHandle = () => {
+    // 验证登录，未登录则return
+    const loginFlag = this.storeHandle();
+    if (!loginFlag) return;
 
+    const { id, storeActions } = this.props;
+    const { isStore } = this.state;
+
+    if (isStore) {
+      // 已经被收藏了，则取消收藏
+      storeActions.rm(id);
+    } else {
+      // 未收藏，则添加到收藏中
+      storeActions.add(id);
+    }
+
+    // 修改状态
+    this.setState({
+      isStore: !isStore
+    });
   }
 
   // 检查登录状态
