@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 import OrderListComponent from '../../../components/OrderList';
-import { getOrderListData } from '../../../fetch/user/orderlist';
+import { getOrderListData, postComment } from '../../../fetch/user/orderlist';
 import './style.less';
 
 class OrderList extends Component {
@@ -26,7 +26,16 @@ class OrderList extends Component {
         this.setState({
           data: json
         });
+      }).catch((ex) => {
+        if (__DEV__) {
+          console.error('用户主页“订单列表”获取数据报错, ', ex.message);
+        }
       });
+  }
+
+  // 提交评价
+  submitComment = (id, value, callback) => {
+
   }
 
   render() {
@@ -37,7 +46,7 @@ class OrderList extends Component {
         <h2>您的订单</h2>
         {
           data.length
-          ? <OrderListComponent data={data} />
+          ? <OrderListComponent data={data} submitComment={this.submitComment} />
           : <div>{/* loading */}</div>
         }
       </div>

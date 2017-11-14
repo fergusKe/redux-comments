@@ -31,6 +31,24 @@ class Item extends Component {
     });
   }
 
+  submitComment = () => {
+    // 获取id
+    const { id } = this.props.data;
+    // 获取评价内容
+    const { commentText } = this.refs;
+    const value = commentText.value.trim();
+
+    if (!value) return;
+
+  }
+
+  commentOk = () => {
+    // 已经评价，修改状态
+    this.setState({
+      commentState: 2
+    });
+  }
+
 
   render() {
     const { data } = this.props;
@@ -63,11 +81,11 @@ class Item extends Component {
           // “评价中”才会显示输入框
           this.state.commentState === 1
           ? <div className="comment-text-container">
-            <textarea style={{width: '100%', height: '80px'}} className="comment-text" />
-            <button className="btn">提交</button>
+            <textarea style={{width: '100%', height: '80px'}} className="comment-text" ref="commentText" />
+            <button className="btn" onClick={this.submitComment}>提交</button>
                       &nbsp;
             <button className="btn unseleted-btn" onClick={this.hideComment}>取消</button>
-          </div>
+            </div>
           : ''
         }
       </div>
