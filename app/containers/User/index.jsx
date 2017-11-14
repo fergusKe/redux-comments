@@ -4,6 +4,7 @@ import { withRouter } from 'react-router-dom';
 
 import Header from '../../components/Header';
 import UserInfo from '../../components/UserInfo';
+import OrderList from './subpage/OrderList.jsx';
 
 class User extends Component {
   componentDidMount() {
@@ -20,6 +21,7 @@ class User extends Component {
       <div>
         <Header title="用户主页" backRouter="/" history={this.props.history} />
         <UserInfo username={username} city={cityName} />
+        <OrderList username={username} />
       </div>
     );
   }

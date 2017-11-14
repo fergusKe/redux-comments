@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 
+import './style.less';
+
 class UserIndo extends Component {
   render() {
     const { username, city } = this.props;
