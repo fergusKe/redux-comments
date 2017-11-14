@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 
 import Header from '../../components/Header';
+import UserInfo from '../../components/UserInfo';
 
 class User extends Component {
   componentDidMount() {
@@ -13,9 +14,12 @@ class User extends Component {
   }
 
   render() {
+    const { username, cityName} = this.props.userinfo;
+
     return (
       <div>
         <Header title="用户主页" backRouter="/" history={this.props.history} />
+        <UserInfo username={username} city={cityName} />
       </div>
     );
   }
