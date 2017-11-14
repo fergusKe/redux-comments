@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 
+import OrderListComponent from '../../../components/OrderList';
 import { getOrderListData } from '../../../fetch/user/orderlist';
 import './style.less';
 
@@ -22,17 +23,21 @@ class OrderList extends Component {
     result
       .then(res => res.json())
       .then((json) => {
-        console.log('json = ', json);
+        this.setState({
+          data: json
+        });
       });
   }
 
   render() {
+    const { data } = this.state;
+
     return (
       <div className="order-list-container">
         <h2>您的订单</h2>
         {
-          this.state.data.length
-          ? <div>顯示訂單</div>
+          data.length
+          ? <OrderListComponent data={data} />
           : <div>{/* loading */}</div>
         }
       </div>
