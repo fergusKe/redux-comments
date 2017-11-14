@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 
+import Star from '../../Star';
 import './style.less';
 
 const img = require('../../../static/img/3.png');
@@ -9,6 +10,7 @@ const imgUrl = `/${img}`;
 class Item extends Component {
   state = {
     commentState: 2, // commentState  0-未评价 1-评价中 2-已评价
+    stars: {}
   }
 
   componentDidMount() {
@@ -39,11 +41,14 @@ class Item extends Component {
     // 获取评价内容
     const { commentText } = this.refs;
     const value = commentText.value.trim();
+    // 获取 star 数量
+    const { stars } = this.state;
+    const star = stars[id] || '0';
 
     if (!value) return;
 
     // 执行数据提交
-    submitComment(id, value, this.commentOk);
+    submitComment(id, value, star, this.commentOk);
   }
 
   commentOk = () => {
@@ -53,6 +58,16 @@ class Item extends Component {
     });
   }
 
+  starClickCallback = (star) => {
+    const { stars } = this.state;
+    const { id } = this.props.data;
+    stars[id] = star;
+    console.log('stars = ', stars);
+
+    this.setState({
+      stars
+    });
+  }
 
   render() {
     const { data } = this.props;
@@ -86,6 +101,9 @@ class Item extends Component {
           this.state.commentState === 1
           ? <div className="comment-text-container">
             <textarea style={{width: '100%', height: '80px'}} className="comment-text" ref="commentText" />
+            <div style={{paddingTop: '10px', paddingBottom: '10px'}}>
+              <Star star="0" clickCallback={this.starClickCallback} />
+            </div>
             <button className="btn" onClick={this.submitComment}>提交</button>
                       &nbsp;
             <button className="btn unseleted-btn" onClick={this.hideComment}>取消</button>
