@@ -32,14 +32,18 @@ class Item extends Component {
   }
 
   submitComment = () => {
+    // 获取操作函数
+    const { submitComment, data } = this.props;
     // 获取id
-    const { id } = this.props.data;
+    const { id } = data;
     // 获取评价内容
     const { commentText } = this.refs;
     const value = commentText.value.trim();
 
     if (!value) return;
 
+    // 执行数据提交
+    submitComment(id, value, this.commentOk);
   }
 
   commentOk = () => {
@@ -85,7 +89,7 @@ class Item extends Component {
             <button className="btn" onClick={this.submitComment}>提交</button>
                       &nbsp;
             <button className="btn unseleted-btn" onClick={this.hideComment}>取消</button>
-            </div>
+          </div>
           : ''
         }
       </div>

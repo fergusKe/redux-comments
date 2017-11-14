@@ -12,7 +12,6 @@ class OrderList extends Component {
           <Item key={index} data={item} submitComment={submitComment} />
         ))}
       </div>
-
     );
   }
 }
